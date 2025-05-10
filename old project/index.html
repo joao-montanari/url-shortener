@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./styles/main.css">
+    <link rel="icon" href="./assets/logo.png">
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
+    <script src="./scripts/firebase-config.js"></script>
+    <script src="./scripts/main.js" defer></script>
+    <title>URL Shortener</title>
+</head>
+<body>
+    <div class="master-container">
+        <div class="card-container-area">
+            <h1>Cole a sua URL abaixo</h1>
+            <div class="input-area">
+                <input type="text" title="Cole sua URL">
+                <button onclick="submit()">
+                    Encurtar
+                </button>
+            </div>
+            <p>Gere um link curto para a sua URL e a use livremente para compartilhamento e acesso.</p>
+        </div>
+    </div>
+</body>
+</html>
