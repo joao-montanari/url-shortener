@@ -9,8 +9,8 @@
 .card-container-area {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     width: 600px;
-    padding: 20px 10px;
-    border-radius: 6px;
+    padding: 25px 15px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,4 +50,27 @@
 
 .input-area button:hover {
     background-color: #4f8b04;
+}
+
+.btn-area-bottom-container {
+    display: flex;
+    width: 80%;
+    gap: 20px;
+}
+
+.btn-area-bottom-container button {
+    padding: 12px;
+    cursor: pointer;
+    transition: 0.5s;
+    border: 2px solid #65B307;
+    background-color: transparent;
+    color: #65B307;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.btn-area-bottom-container button:hover {
+    background-color: #65B307;
+    color: #ffffff;
 }

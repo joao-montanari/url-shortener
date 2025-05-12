@@ -1,21 +1,33 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import './style.css';
 import { createUrl } from '../../firebase/crud';
 import LoadingComponent from '../../components/Loading';
 
 const HomePage = () => {
+    const navigate = useNavigate();
     const [link, setLink] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
     const [shortenerUrl, setShortenerUrl] = useState<string | null>(null);
 
     const onSubmit = async () => {
+        if(link.length <= 0) return;
+
         setLoading(true);
         const response = await createUrl(link);
         if(response) {
             setShortenerUrl(`http://localhost:5173/#/r/${response}`);
         }
-        setShortenerUrl(response);
         setLoading(false);
+    }
+
+    const copyLink = async () => {
+        try {
+            await navigator.clipboard.writeText(shortenerUrl!);
+        } catch(error) {
+            console.error('Erro ao copiar o texto: ', error);
+        }
     }
 
     return (
@@ -30,9 +42,7 @@ const HomePage = () => {
                                 type="text" 
                                 title="Cole sua URL"
                                 value={link}
-                                onChange={(e) => {
-                                    setLink(e.target.value);
-                                }}
+                                onChange={(e) => setLink(e.target.value)}
                             />
                             <button onClick={onSubmit}>
                                 Encurtar
@@ -42,7 +52,26 @@ const HomePage = () => {
                     </div>
                 ) : (
                     <div className="card-container-area">
-                        
+                        <h1>Sua URL encurtada</h1>
+                        <div className="input-area">
+                            <input 
+                                type="text" 
+                                title="Copie sua URL"
+                                value={shortenerUrl}
+                            />
+                            <button onClick={copyLink}>
+                                Copiar
+                            </button>
+                        </div>
+                        <p>URL longa: <strong>{link}</strong></p>
+                        <div className="btn-area-bottom-container">
+                            <button 
+                                onClick={() => window.location.reload()}
+                            >
+                                Encurtar outra URL
+                            </button>
+                            <button>Gerar QR Code</button>
+                        </div>
                     </div>
                 )
             }
