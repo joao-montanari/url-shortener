@@ -1,24 +1,29 @@
 
 import { useEffect } from 'react';
-import { collection, addDoc, getDocs, Timestamp } from "firebase/firestore";
+import { useParams, useNavigate } from 'react-router-dom';
 
 import LoadingComponent from '../../components/Loading';
-import { db } from '../../utils/firebase-config';
+import { getUrlByID } from '../../firebase/crud';
 
 import './style.css';
 
-const RedeirectPage = () => {
+const RedirectPage = () => {
+    const { id } = useParams();
+    const navigate = useNavigate();
 
-    async function getLinks() {
-        const querySnapshot = await getDocs(collection(db, "urls"));
-        querySnapshot.forEach((doc) => {
-            console.log(`${doc.id} =>`, doc.data());
-        });
+    async function getLink() {
+        if(!id) navigate('/home');
+        const response = await getUrlByID(id!);
+        if(response) {
+            window.location.href = response.link;
+        } else {
+            navigate('/home');
+        }
     }
 
     useEffect(() => {
-        getLinks();
-    }, []);
+        getLink();
+    });
 
     return (
         <div className='redirect-page-master-container'>
@@ -27,4 +32,4 @@ const RedeirectPage = () => {
     )
 }
 
-export default RedeirectPage;
+export default RedirectPage;
