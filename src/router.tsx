@@ -1,13 +1,31 @@
 import { createHashRouter } from "react-router-dom";
 
 import HomePage from './Pages/Home';
-import RedeirectPage from "./Pages/Redirect";
+import RedirectPage from "./Pages/Redirect";
 
 const routers = createHashRouter([
     {
-        path: "/home",
-        errorElement: <RedeirectPage/>,
-        element: <HomePage/>,
+        path: "/",
+        // errorElement: <RedirectPage/>,
+        // element: <HomePage/>,
+        children: [
+            {
+                path: "/",
+                element: <HomePage/>,
+            },
+            {
+                path: "/home",
+                element: <HomePage/>,
+            },
+            {
+                path: "/r",
+                element: <RedirectPage/>,
+            },
+            {
+                path: "/r/:id",
+                element: <RedirectPage/>,
+            }
+        ]
     }
 ]);
 
