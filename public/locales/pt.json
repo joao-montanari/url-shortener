@@ -1,0 +1,15 @@
+{
+    "home_page": {
+        "title": "Cole a sua URL abaixo",
+        "btn_shortener": "Encurtar",
+        "bottom_message": "Gere um link curto para a sua URL e a use livremente para compartilhamento e acesso.",
+        "after_generate": {
+            "title": "Sua URL encurtada",
+            "btn_copy": "Copiar",
+            "long_url": "URL longa:",
+            "btn_return": "Encurtar outra URL",
+            "btn_qrCode": "Gerar QR Code",
+            "copy_url": "Copie sua URL"
+        }
+    }
+}
