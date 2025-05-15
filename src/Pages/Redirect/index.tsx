@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import LoadingComponent from '../../components/Loading';
+import Loading from '../../components/Loading';
 import { getUrlByID } from '../../firebase/crud';
 
 import './style.css';
@@ -27,7 +27,7 @@ const RedirectPage = () => {
 
     return (
         <div className='redirect-page-master-container'>
-            <LoadingComponent/>
+            <Loading/>
         </div>
     )
 }
