@@ -11,5 +11,9 @@
             "btn_qrCode": "Gerar QR Code",
             "copy_url": "Copie sua URL"
         }
+    },
+    "not_found_page": {
+        "title": "Página não encontrada :(",
+        "return_btn": "Ir para a página inicial"
     }
 }
