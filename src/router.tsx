@@ -2,11 +2,12 @@ import { createHashRouter } from "react-router-dom";
 
 import HomePage from './Pages/Home';
 import RedirectPage from "./Pages/Redirect";
+import NotFoundPage from "./Pages/NotFound";
 
 const routers = createHashRouter([
     {
         path: "/",
-        // errorElement: <RedirectPage/>,
+        errorElement: <NotFoundPage/>,
         // element: <HomePage/>,
         children: [
             {
