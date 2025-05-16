@@ -4,7 +4,7 @@ import '../../../i18n';
 
 import './style.css';
 import { createUrl } from '../../firebase/crud';
-import LoadingComponent from '../../components/Loading';
+import Loading from '../../components/Loading';
 import QRCode from '../../components/QRCode';
 
 const HomePage = () => {
@@ -35,7 +35,7 @@ const HomePage = () => {
 
     return (
         <div className="master-container">
-            { loading && <LoadingComponent/> }
+            { loading && <Loading/> }
             {
                 !shortenerUrl ? (
                     <div className="card-container-area">

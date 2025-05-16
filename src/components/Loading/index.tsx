@@ -1,6 +1,6 @@
 import './style.css';
 
-const LoadingComponent = () => {
+const Loading = () => {
     return (
         <div className='main-contaniner-loading'>
             <div className='spinner'/>
@@ -8,4 +8,4 @@ const LoadingComponent = () => {
     )
 }
 
-export default LoadingComponent;
+export default Loading;
