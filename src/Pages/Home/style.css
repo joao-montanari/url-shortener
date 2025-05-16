@@ -9,7 +9,7 @@
 .card-container-area {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     width: 600px;
-    padding: 25px 15px;
+    padding: 25px 20px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -17,6 +17,18 @@
     text-align: center;
     background-color: #202020;
     gap: 10px;
+}
+
+.larger-url-container {
+    width: 100%;
+}
+
+.larger-url-container p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .input-area {

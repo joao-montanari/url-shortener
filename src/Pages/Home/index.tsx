@@ -66,7 +66,9 @@ const HomePage = () => {
                                 {t("home_page.after_generate.btn_copy")}
                             </button>
                         </div>
-                        <p><strong>{t("home_page.after_generate.long_url")}</strong> {link}</p>
+                        <div className="larger-url-container">
+                            <p><strong>{t("home_page.after_generate.long_url")}</strong> {link}</p>
+                        </div>
                         {isShowQRCode && <QRCode url={shortenerUrl}/>}
                         <div className="btn-area-bottom-container">
                             <button 
@@ -74,9 +76,17 @@ const HomePage = () => {
                             >
                                 {t("home_page.after_generate.btn_return")}
                             </button>
-                            <button onClick={() => setShowQRCode(!isShowQRCode)}>
-                                {t("home_page.after_generate.btn_qrCode")}
-                            </button>
+                            {
+                                !isShowQRCode ? (
+                                    <button onClick={() => setShowQRCode(!isShowQRCode)}>
+                                        {t("home_page.after_generate.btn_qrCode")}
+                                    </button>
+                                ) : (
+                                    <button onClick={() => setShowQRCode(!isShowQRCode)}>
+                                        {t("home_page.after_generate.btn_qrCode")}
+                                    </button>
+                                )
+                            }
                         </div>
                     </div>
                 )
