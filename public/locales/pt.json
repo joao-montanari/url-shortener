@@ -3,6 +3,7 @@
         "title": "Cole a sua URL abaixo",
         "btn_shortener": "Encurtar",
         "bottom_message": "Gere um link curto para a sua URL e a use livremente para compartilhamento e acesso.",
+        "copy_text_error": "Erro ao copiar o texto",
         "after_generate": {
             "title": "Sua URL encurtada",
             "btn_copy": "Copiar",
