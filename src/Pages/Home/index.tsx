@@ -5,12 +5,14 @@ import '../../../i18n';
 import './style.css';
 import { createUrl } from '../../firebase/crud';
 import Loading from '../../components/Loading';
+import QRCode from '../../components/QRCode';
 
 const HomePage = () => {
     const { t } = useTranslation();
     const [link, setLink] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
     const [shortenerUrl, setShortenerUrl] = useState<string | null>(null);
+    const [isShowQRCode, setShowQRCode] = useState<boolean>(false);
 
     const onSubmit = async () => {
         if(link.length <= 0) return;
@@ -27,7 +29,7 @@ const HomePage = () => {
         try {
             await navigator.clipboard.writeText(shortenerUrl!);
         } catch(error) {
-            console.error('Erro ao copiar o texto: ', error);
+            console.error(`${t("home_page.copy_text_error")}: `, error);
         }
     }
 
@@ -65,13 +67,16 @@ const HomePage = () => {
                             </button>
                         </div>
                         <p><strong>{t("home_page.after_generate.long_url")}</strong> {link}</p>
+                        {isShowQRCode && <QRCode url={shortenerUrl}/>}
                         <div className="btn-area-bottom-container">
                             <button 
                                 onClick={() => window.location.reload()}
                             >
                                 {t("home_page.after_generate.btn_return")}
                             </button>
-                            <button>{t("home_page.after_generate.btn_qrCode")}</button>
+                            <button onClick={() => setShowQRCode(!isShowQRCode)}>
+                                {t("home_page.after_generate.btn_qrCode")}
+                            </button>
                         </div>
                     </div>
                 )
