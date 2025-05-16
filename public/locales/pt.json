@@ -7,7 +7,7 @@
         "after_generate": {
             "title": "Sua URL encurtada",
             "btn_copy": "Copiar",
-            "long_url": "URL longa:",
+            "long_url": "Sua URL:",
             "btn_return": "Encurtar outra URL",
             "btn_qrCode": "Gerar QR Code",
             "copy_url": "Copie sua URL"
