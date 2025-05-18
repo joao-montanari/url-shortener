@@ -1,18 +1,33 @@
 import { QRCodeCanvas } from 'qrcode.react';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import './style.css';
+import Dropdown from '../Dropdown';
 
 const QRCode = ({ url, withDownloadBtn = true }: {url: string, withDownloadBtn?: boolean}) => {
     const qrRef = useRef<HTMLCanvasElement>(null);
+    const [imageFormat, setImageFormat] = useState<string>("png");
+    const DropdownStyles: Map<string, React.CSSProperties> = new Map([
+        ["button", {
+            backgroundColor: '#65B307',
+            color: '#ffffff',
+            borderTopRightRadius: '5px',
+            borderBottomRightRadius: '5px',
+            border: '1px solid #65B307',
+            height: '40px',
+            width: '70px'
+        }],
+        ["boxOptions", {}],
+        ["option", {}],
+    ]);
 
     const downloadQRCode = () => {
         const canvas = qrRef.current;
         if(canvas) {
-            const dataUrl = canvas.toDataURL('image/png');
+            const dataUrl = canvas.toDataURL(`image/${imageFormat}`);
             const element = document.createElement('a');
             element.href = dataUrl;
-            element.download = 'qrcode.png';
+            element.download = `qrcode.${imageFormat}`;
             element.click();
         }
     }
@@ -31,14 +46,20 @@ const QRCode = ({ url, withDownloadBtn = true }: {url: string, withDownloadBtn?:
             {
                 withDownloadBtn && (
                     <div className="download-qrcode-area">
-                        <button onClick={downloadQRCode}>
+                        <button 
+                            className='download-btn'
+                            onClick={downloadQRCode}
+                        >
                             Download
                         </button>
-                        <select disabled name="download" id="options-download">
-                            <option value="svg">.png</option>
-                            <option value="png">.svg</option>
-                            <option value="jpeg">.jpeg</option>
-                        </select>
+                        <Dropdown
+                            items={['png', 'jpeg', 'svg']}
+                            value={imageFormat}
+                            setValue={setImageFormat}
+                            styleButton={DropdownStyles.get('button')}
+                            styleOptionsBox={DropdownStyles.get('boxOptions')}
+                            styleOption={DropdownStyles.get('option')}
+                        />
                     </div>
                 )
             }
