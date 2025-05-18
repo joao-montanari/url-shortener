@@ -1,0 +1,40 @@
+.dropdown-container-global {
+    /* border: 1px solid white; */
+}
+
+.dropdown-container-global button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    cursor: pointer;
+    font-size: 16px;
+    /* background-color: transparent;
+    background-color: #65B307;
+    border: none;
+    color: #65B307;
+    height: 100%; */
+}
+
+.dropdown-container-global button span {
+    margin-left: 5px;
+}
+
+.button-component-icon {
+    margin-left: 5px;
+    transition: 0.5s;
+}
+
+.dropdown-options-area {
+    border: 1px solid red;
+    position: relative;
+    bottom: -40%;
+    width: 100%;
+}
+
+.option-content {
+    border: 1px solid green;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
