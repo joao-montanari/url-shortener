@@ -5,7 +5,6 @@
 .download-qrcode-area {
     display: flex;
     margin-top: 10px;
-    margin-bottom: 30px;
     height: 40px;
 }
 
@@ -26,4 +25,8 @@
 .download-btn:hover {
     color: #ffffff;
     background-color: #65B307;
+}
+
+.qr-code-hidden-svg {
+    display: none;
 }

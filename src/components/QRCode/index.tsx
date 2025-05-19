@@ -1,11 +1,12 @@
-import { QRCodeCanvas } from 'qrcode.react';
+import { QRCodeCanvas, QRCodeSVG } from 'qrcode.react';
 import { useRef, useState } from 'react';
 
 import './style.css';
 import Dropdown from '../Dropdown';
 
 const QRCode = ({ url, withDownloadBtn = true }: {url: string, withDownloadBtn?: boolean}) => {
-    const qrRef = useRef<HTMLCanvasElement>(null);
+    const qrRef = useRef<HTMLCanvasElement | null>(null);
+    const qrSvgRef = useRef<SVGSVGElement | null>(null);
     const [imageFormat, setImageFormat] = useState<string>("png");
     const DropdownStyles: Map<string, React.CSSProperties> = new Map([
         ["button", {
@@ -16,13 +17,28 @@ const QRCode = ({ url, withDownloadBtn = true }: {url: string, withDownloadBtn?:
         }],
         ["boxOptions", {
             bottom: '-115%',
-            width: '70px'
+            width: '70px',
+            borderRadius: '4px',
         }],
-        ["option", {}],
     ]);
 
     const downloadQRCode = () => {
         const canvas = qrRef.current;
+
+        if(imageFormat === 'svg') {
+            const serializer = new XMLSerializer();
+            const svgString = serializer.serializeToString(qrSvgRef.current!);
+
+            const blob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'qrcode.svg';
+            link.click();
+            return;
+        }
+
         if(canvas) {
             const dataUrl = canvas.toDataURL(`image/${imageFormat}`);
             const element = document.createElement('a');
@@ -43,6 +59,9 @@ const QRCode = ({ url, withDownloadBtn = true }: {url: string, withDownloadBtn?:
                 className='qr-code-canvas'
                 ref={qrRef}
             />
+            <div className="qr-code-hidden-svg">
+                <QRCodeSVG value={url} includeMargin level="H" ref={qrSvgRef}/>
+            </div>
             {
                 withDownloadBtn && (
                     <div className="download-qrcode-area">
@@ -58,7 +77,6 @@ const QRCode = ({ url, withDownloadBtn = true }: {url: string, withDownloadBtn?:
                             setValue={setImageFormat}
                             styleButton={DropdownStyles.get('button')}
                             styleOptionsBox={DropdownStyles.get('boxOptions')}
-                            styleOption={DropdownStyles.get('option')}
                         />
                     </div>
                 )

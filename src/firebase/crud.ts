@@ -7,7 +7,7 @@ export type Url = {
     link: string;
 }
 
-export const createUrl = async (url: string): Promise<string | null> => {
+const createUrl = async (url: string): Promise<string | null> => {
     let tryGenerateSingleID: boolean = false;
     let singleID: string = "";
 
@@ -29,7 +29,7 @@ export const createUrl = async (url: string): Promise<string | null> => {
     }
 }
 
-export const getUrlByLink = async (link: string): Promise<Url | null> => {
+const getUrlByLink = async (link: string): Promise<Url | null> => {
     const urlsRef = collection(db, 'urls');
     const response: Url[] = [];
 
@@ -53,7 +53,7 @@ export const getUrlByLink = async (link: string): Promise<Url | null> => {
     }
 }
 
-export const getUrlByID = async (id: string): Promise<Url | null> => {
+const getUrlByID = async (id: string): Promise<Url | null> => {
  const urlRef = doc(db, 'urls', id);
 
  try {
@@ -69,7 +69,7 @@ export const getUrlByID = async (id: string): Promise<Url | null> => {
  }
 }
 
-export const getUrls = async (): Promise<Url[] | null> => {
+const getUrls = async (): Promise<Url[] | null> => {
     const response: Url[] = [];
 
     try {
@@ -82,4 +82,11 @@ export const getUrls = async (): Promise<Url[] | null> => {
         console.error('Erro ao buscar os links: ', error);
         return null;
     }
+}
+
+export {
+    getUrls,
+    getUrlByID,
+    getUrlByLink,
+    createUrl,
 }
