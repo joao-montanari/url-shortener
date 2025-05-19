@@ -11,11 +11,24 @@
             "btn_return": "Encurtar outra URL",
             "btn_qrCode": "Gerar QR Code",
             "copy_url": "Copie sua URL",
-            "analysis_url": "Analíse os acessos a sua URL"
+            "analysis_url": "Analíse os acessos da sua URL"
         }
     },
     "not_found_page": {
         "title": "Página não encontrada :(",
         "return_btn": "Ir para a página inicial"
+    },
+    "notification": {
+        "success": "Sucesso",
+        "error": "Erro",
+        "warning": "Aviso",
+        "info": "Info",
+        "messages": {
+            "success_create_link": "URL encurtada.",
+            "error_create_link": "Não foi possível salvar as informações da URL.",
+            "success_text_copy": "Texto copiado.",
+            "error_text_copy": "Não foi possível copiar o texto.",
+            "block_facture": "Está funcionalidade ainda está indisponível."
+        }
     }
 }
