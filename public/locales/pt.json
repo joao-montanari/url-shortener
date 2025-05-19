@@ -10,7 +10,8 @@
             "long_url": "Sua URL:",
             "btn_return": "Encurtar outra URL",
             "btn_qrCode": "Gerar QR Code",
-            "copy_url": "Copie sua URL"
+            "copy_url": "Copie sua URL",
+            "analysis_url": "Analíse os acessos a sua URL"
         }
     },
     "not_found_page": {
