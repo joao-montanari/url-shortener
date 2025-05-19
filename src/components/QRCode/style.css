@@ -26,3 +26,7 @@
     color: #ffffff;
     background-color: #65B307;
 }
+
+.qr-code-hidden-svg {
+    display: none;
+}
