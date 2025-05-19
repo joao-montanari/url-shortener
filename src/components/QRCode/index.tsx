@@ -9,15 +9,15 @@ const QRCode = ({ url, withDownloadBtn = true }: {url: string, withDownloadBtn?:
     const [imageFormat, setImageFormat] = useState<string>("png");
     const DropdownStyles: Map<string, React.CSSProperties> = new Map([
         ["button", {
-            backgroundColor: '#65B307',
-            color: '#ffffff',
             borderTopRightRadius: '5px',
             borderBottomRightRadius: '5px',
-            border: '1px solid #65B307',
             height: '40px',
             width: '70px'
         }],
-        ["boxOptions", {}],
+        ["boxOptions", {
+            bottom: '-115%',
+            width: '70px'
+        }],
         ["option", {}],
     ]);
 

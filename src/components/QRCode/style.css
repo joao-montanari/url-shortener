@@ -10,7 +10,8 @@
 }
 
 .download-btn {
-    width: 70%;
+    width: 65%;
+    min-width: 65%;
     height: 40px;
     background-color: transparent;
     color: #65B307;
