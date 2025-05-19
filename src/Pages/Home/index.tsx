@@ -69,25 +69,44 @@ const HomePage = () => {
                         <div className="larger-url-container">
                             <p><strong>{t("home_page.after_generate.long_url")}</strong> {link}</p>
                         </div>
-                        {isShowQRCode && <QRCode url={shortenerUrl}/>}
-                        <div className="btn-area-bottom-container">
-                            <button 
-                                onClick={() => window.location.reload()}
-                            >
-                                {t("home_page.after_generate.btn_return")}
-                            </button>
-                            {
-                                !isShowQRCode ? (
-                                    <button onClick={() => setShowQRCode(!isShowQRCode)}>
-                                        {t("home_page.after_generate.btn_qrCode")}
+                        {
+                            isShowQRCode ? (
+                                <div className="show-qr-code-container">
+                                    <QRCode url={shortenerUrl}/>
+                                    <div className="show-qr-code-content">
+                                        <button 
+                                            className='area-bottom-container-btn' 
+                                            onClick={() => window.location.reload()}
+                                        >
+                                            {t("home_page.after_generate.btn_return")}
+                                        </button>
+                                        <button className='area-bottom-container-btn' onClick={() => setShowQRCode(!isShowQRCode)}>
+                                        {t("home_page.after_generate.analysis_url")}
                                     </button>
-                                ) : (
-                                    <button onClick={() => setShowQRCode(!isShowQRCode)}>
-                                        {t("home_page.after_generate.btn_qrCode")}
+                                    </div>
+                                </div>
+                            ) : (
+                                <>
+                                    <div className="area-bottom-container">
+                                        <button 
+                                            className='area-bottom-container-btn' 
+                                            onClick={() => window.location.reload()}
+                                        >
+                                            {t("home_page.after_generate.btn_return")}
+                                        </button>
+                                        <button 
+                                            className='area-bottom-container-btn' 
+                                            onClick={() => setShowQRCode(!isShowQRCode)}
+                                        >
+                                            {t("home_page.after_generate.btn_qrCode")}
+                                        </button>
+                                    </div>
+                                    <button className='area-bottom-container-btn btn-analysis-url'>
+                                        {t("home_page.after_generate.analysis_url")}
                                     </button>
-                                )
-                            }
-                        </div>
+                                </>
+                            )
+                        }
                     </div>
                 )
             }
